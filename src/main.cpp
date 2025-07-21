@@ -3,7 +3,7 @@
 #include <Wire.h>
 #include <ArduinoJson.h>
 
-const int DEVICE_TYPE = 2;
+const int DEVICE_TYPE = 0;
 
 BLEService imuService("12345678-1234-5678-1234-56789abcdef0");
 BLECharacteristic imuDataCharacteristic("12345678-1234-5678-1234-56789abcdef1", BLERead | BLENotify, 200); // Increased buffer size
@@ -36,6 +36,9 @@ void setup() {
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
+
+  pinMode(2, OUTPUT);
+  digitalWrite(2, HIGH);
 
   if (!BLE.begin()) {
     Serial.println("BLE failed!");
